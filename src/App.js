@@ -34,7 +34,7 @@ const App = () => {
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
 
   const handleSearch = async (ingredients) => {
-    const response = await axios.get(`http://localhost:3000/api/recipes`, {
+    const response = await axios.get(`http://localhost:4000/api/recipes`, {
       params: { ingredients },
     });
     setRecipes(response.data);
@@ -47,6 +47,7 @@ const App = () => {
   const handleBack = () => {
     setSelectedRecipeId(null);
   };
+  
 
   return (
     <div>

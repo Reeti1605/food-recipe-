@@ -6,7 +6,7 @@ const RecipeDetails = ({ recipeId, onBack }) => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const response = await axios.get(`http://localhost:3000/api/recipes/details/${recipeId}`);
+      const response = await axios.get(`http://localhost:4000/api/recipes/details/${recipeId}`);
       setDetails(response.data);
     };
 
