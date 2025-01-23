@@ -1,9 +1,77 @@
+// import React, { useState } from 'react';
+
+// const SearchBar = ({ onSearch }) => {
+//   const [ingredients, setIngredients] = useState('');
+
+//   // Trigger search on "Enter" key
+//   const handleKeyDown = (e) => {
+//     if (e.key === 'Enter') {
+//       onSearch(ingredients);
+//     }
+//   };
+
+//   // Trigger search on button click
+//   const handleSearchClick = () => {
+//     onSearch(ingredients);
+//   };
+
+//   return (
+//     <div style={styles.container}>
+//       <input
+//         type="text"
+//         placeholder="Enter ingredients (comma-separated)"
+//         value={ingredients}
+//         onChange={(e) => setIngredients(e.target.value)}
+//         onKeyDown={handleKeyDown}
+//         style={styles.input}
+//       />
+//       <button onClick={handleSearchClick} style={styles.button}>
+//         Search
+//       </button>
+//     </div>
+//   );
+// };
+
+// const styles = {
+//   container: {
+//     display: 'flex',
+//     gap: '10px',
+//   },
+//   input: {
+//     width: '300px',
+//     padding: '10px',
+//     fontSize: '16px',
+//     borderRadius: '5px',
+//     border: '1px solid #ccc',
+//     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+//   },
+//   button: {
+//     padding: '10px 20px',
+//     fontSize: '16px',
+//     borderRadius: '5px',
+//     backgroundColor: '#007BFF',
+//     color: '#fff',
+//     border: 'none',
+//     cursor: 'pointer',
+//     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+//     transition: 'background-color 0.3s ease',
+//   },
+// };
+
+// export default SearchBar;
+
 import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
   const [ingredients, setIngredients] = useState('');
 
-  const handleSearch = () => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      onSearch(ingredients);
+    }
+  };
+
+  const handleSearchClick = () => {
     onSearch(ingredients);
   };
 
@@ -14,9 +82,10 @@ const SearchBar = ({ onSearch }) => {
         placeholder="Enter ingredients (comma-separated)"
         value={ingredients}
         onChange={(e) => setIngredients(e.target.value)}
+        onKeyDown={handleKeyDown}
         style={styles.input}
       />
-      <button onClick={handleSearch} style={styles.button}>
+      <button onClick={handleSearchClick} style={styles.button}>
         Search
       </button>
     </div>
@@ -26,31 +95,27 @@ const SearchBar = ({ onSearch }) => {
 const styles = {
   container: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh', // Center vertically and span full screen height
-    gap: '10px', // Space between input and button
-    flexDirection: 'row', // Keep input and button side by side
-    padding: '0 20px', // Add some padding for smaller screens
+    gap: '10px',
   },
+  // Make the input field longer
   input: {
-    width: '50%', // Broader input field
+    width: '400px',
     padding: '10px',
     fontSize: '16px',
     borderRadius: '5px',
     border: '1px solid #ccc',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', // Subtle shadow for better aesthetics
+    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
   },
   button: {
     padding: '10px 20px',
     fontSize: '16px',
     borderRadius: '5px',
     backgroundColor: '#007BFF',
-    color: 'white',
+    color: '#fff',
     border: 'none',
     cursor: 'pointer',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', // Subtle shadow
-    transition: 'background-color 0.3s ease', // Smooth hover effect
+    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+    transition: 'background-color 0.3s ease',
   },
 };
 
