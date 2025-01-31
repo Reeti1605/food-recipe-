@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecipeList = ({ recipes, onSelectRecipe }) => {
+const RecipeList = ({ recipes, onSelectRecipe, onLoadMore, hasMore }) => {
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Recipes</h2>
@@ -13,8 +13,6 @@ const RecipeList = ({ recipes, onSelectRecipe }) => {
               style={styles.image}
             />
             <h3 style={styles.title}>{recipe.title}</h3>
-
-            {/* Button pinned to the bottom */}
             <button
               onClick={() => onSelectRecipe(recipe.id)}
               style={styles.button}
@@ -24,6 +22,13 @@ const RecipeList = ({ recipes, onSelectRecipe }) => {
           </div>
         ))}
       </div>
+
+      {/* Load More Button */}
+      {hasMore && (
+        <button onClick={onLoadMore} style={styles.loadMoreButton}>
+          Load More
+        </button>
+      )}
     </div>
   );
 };
@@ -53,11 +58,8 @@ const styles = {
     textAlign: 'center',
     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
     cursor: 'pointer',
-
-    // Flex layout to align items from top to bottom
     display: 'flex',
     flexDirection: 'column',
-    // Force a consistent card height
     minHeight: '300px',
   },
   image: {
@@ -73,7 +75,6 @@ const styles = {
     color: '#555',
   },
   button: {
-    // Push this button to the bottom of the card
     marginTop: 'auto',
     padding: '10px 15px',
     backgroundColor: '#007BFF',
@@ -81,6 +82,17 @@ const styles = {
     border: 'none',
     borderRadius: '5px',
     fontSize: '14px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease',
+  },
+  loadMoreButton: {
+    marginTop: '20px',
+    padding: '10px 20px',
+    backgroundColor: '#28a745',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '16px',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   },
